@@ -8,18 +8,17 @@ int askNumber(string question, int high, int low = 1);
 //GUESS MY NUMBER
 void guessMyNumber();
 
-
-
 int main()
 {
-    //vector<string> myStuff = { "espada", "martillo", "bomba" };
-    //vector<string> inventory(10);
-    //vector<string> inventory(10, " Vacio ");
-    //vector<string> inventory(myStuff);
+    //vector<string> myStuff = { "espada", "martillo", "bomba" }; Vector con espacios con esos elementos
+    //vector<string> inventory(10);                               vector con 10 espacios vacios
+    //vector<string> inventory(10, " Vacio ");                    vector con 10 espacios, todos dicen vacio
+    //vector<string> inventory(myStuff);                          vector dentro de un vector
 
     vector<string> inventory;
+    vector<string> newinventory(5);
 
-    inventory.push_back("Espada");
+    inventory.push_back("Espada"); //sintaxis para agregar elemento al final del vector
     inventory.push_back("Escudo");
     inventory.push_back("Martillo");
 
@@ -42,9 +41,46 @@ int main()
         cout << inventory[i] << endl;
         i++;
     } while (i < inventory.size());
+
+    cout << inventory[0] << " tiene " << inventory[0].size() << " letras en el" << endl;
+
+    cout << "Perdiste un item en la ultima batalla :(" << endl;
+
+    inventory.pop_back();
+
+    for (unsigned int i = 0; i < inventory.size(); i++)
+    {
+        cout << inventory[i] << endl;
+    }
+
+    cout << "Un enemigo ha robado todas tus armas" << endl;
+    inventory.clear();
+
+    if (inventory.empty()) {
+        cout << "No tienes nada..." << endl;
+    }
+    else {
+        for (unsigned int i = 0; i < inventory.size(); i++)
+        {
+            cout << inventory[i] << endl;
+        }
+    }
+    
+    for (unsigned int i = 0; i < newinventory.size(); i++)
+    {
+        cout << "puedes introducir " <<  newinventory.size() - i << " items:" << endl;
+        cin >> newinventory[i];
+       
+        cout << "tu nuevo inventario es: " << endl;
+        for (unsigned int j = 0; j <= i; j++)
+        {
+            cout << newinventory[j] << endl;
+            
+        }
+        system("pause");
+        system("cls");
+    }
 }
-
-
 
 int askNumber(string question, int high, int low)
 {
@@ -57,7 +93,6 @@ int askNumber(string question, int high, int low)
 
     return number;
 }
-
 
 void guessMyNumber()
 {
