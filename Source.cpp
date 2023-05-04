@@ -1,14 +1,151 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
 int askNumber(string question, int high, int low = 1);
 //GUESS MY NUMBER
 void guessMyNumber();
+void vectorsPart1();
+void vectorReserve();
+void vectorPart2();
 
-int main()
+void main() 
+{
+    //encontrar 
+    vector<string> words = { "gato", "perro", "coche" };
+    string w1 = words[0];
+    string w2 = words[1];
+    string w3 = words[2];
+    int lifes = 5;
+    string answer;
+
+    random_shuffle(w1.begin(), w1.end());
+    random_shuffle(w2.begin(), w2.end());
+    random_shuffle(w3.begin(), w3.end());
+
+    do {
+    //srand(time(NULL));
+    cout <<"tienes " << lifes << " vidas" << endl;
+    cout << "adivina cual es esta palabra: " << endl << w1 << endl;
+    cin >> answer;
+
+    if (answer != words[0])
+        {
+        lifes--;
+        }
+    system("pause");
+    system("cls");
+    } while (answer != words[0] && lifes > 0);
+
+    do {
+        if (lifes < 1)
+        {
+            return;
+        }
+        //srand(time(NULL));
+        cout << "tienes " << lifes << " vidas" << endl;
+        cout << "adivina cual es esta palabra: " << endl << w2 << endl;
+        cin >> answer;
+
+        if (answer != words[1])
+        {
+            lifes--;
+        }
+        system("pause");
+        system("cls");
+    } while (answer != words[1] && lifes > 0);
+
+    do {
+        if (lifes < 1)
+        {
+            return;
+        }
+        //srand(time(NULL));
+        cout << "tienes " << lifes << " vidas" << endl;
+        cout << "adivina cual es esta palabra: " << endl << w3 << endl;
+        cin >> answer;
+
+        if (answer != words[2])
+        {
+            lifes--;
+        }
+        system("pause");
+        system("cls");
+    } while (answer != words[2] && lifes > 0);
+
+}
+
+void vectorPart2() {
+    const int NUM_SCORES = 4;
+    int score;
+
+    vector<int>::const_iterator iter;
+    vector<int> scores;
+    string word = "programacion";
+
+    for (int i = 0; i < NUM_SCORES; i++) {
+        cout << "scores " << i + 1 << endl;
+        cin >> score;
+        scores.push_back(score);
+    }
+
+    cout << "puntajes" << endl;
+    for (iter = scores.begin(); iter != scores.end(); iter++) {
+        cout << *iter << endl;
+    }
+
+    cout << "buscar puntajes" << endl;
+    cin >> score;
+
+    //desde donde buscas, hasta donde y que buscas
+    iter = find(scores.begin(), scores.end(), score);
+
+    //si el iter llega al final, significa que nunca encontró el score
+    if (iter != scores.end()) 
+    {
+        cout << endl << "Tu puntaje se encuentra en el vector " << endl;
+
+    }
+    else 
+    {
+        cout << endl << "No encontramos el puntaje que buscas" << endl;
+    }
+
+    srand(time(NULL));
+    random_shuffle(scores.begin(), scores.end());
+
+    /*Sort*/
+    cout << endl << "cambiar en orden" << endl;
+    sort(scores.begin(), scores.end());
+    for (iter = scores.begin(); iter != scores.end(); iter++)
+    {
+        cout << *iter << endl;
+    }
+
+    cout << word << endl;
+    srand(time(NULL));
+    random_shuffle(word.begin(),word.end());
+    cout << word << endl;
+}
+
+void vectorReserve() {
+
+    vector<int> scores(10, 0);
+    scores.reserve(12);
+    cout << "Vector size is: " << scores.size() << endl;
+    cout << "Vector capicity is: " << scores.capacity() << endl;
+
+    scores.push_back(0);
+    cout << "Vector size is: " << scores.size() << endl;
+    cout << "Vector capicity is: " << scores.capacity() << endl;
+
+    
+}
+
+void vectorsPart1()
 {
     //vector<string> myStuff = { "espada", "martillo", "bomba" }; Vector con espacios con esos elementos
     //vector<string> inventory(10);                               vector con 10 espacios vacios
