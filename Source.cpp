@@ -12,7 +12,7 @@ void vectorsPart1();
 void vectorReserve();
 void vectorPart2();
 
-void main() 
+void main()
 {
     //encontrar 
     vector<string> words = { "gato", "perro", "coche" };
@@ -27,17 +27,17 @@ void main()
     random_shuffle(w3.begin(), w3.end());
 
     do {
-    //srand(time(NULL));
-    cout <<"tienes " << lifes << " vidas" << endl;
-    cout << "adivina cual es esta palabra: " << endl << w1 << endl;
-    cin >> answer;
+        //srand(time(NULL));
+        cout << "tienes " << lifes << " vidas" << endl;
+        cout << "adivina cual es esta palabra: " << endl << w1 << endl;
+        cin >> answer;
 
-    if (answer != words[0])
+        if (answer != words[0])
         {
-        lifes--;
+            lifes--;
         }
-    system("pause");
-    system("cls");
+        system("pause");
+        system("cls");
     } while (answer != words[0] && lifes > 0);
 
     do {
@@ -77,6 +77,7 @@ void main()
     } while (answer != words[2] && lifes > 0);
 
 }
+
 
 void vectorPart2() {
     const int NUM_SCORES = 4;
