@@ -10,9 +10,64 @@ int askNumber(string question, int high, int low = 1);
 void guessMyNumber();
 void vectorsPart1();
 void vectorReserve();
-void vectorPart2();
+void Iters();
+void guessword();
+void iterinventory();
 
 void main()
+{
+
+}
+
+void iterinventory()
+{
+    vector<string> inventory;
+    inventory.push_back("Espada");
+    inventory.push_back("Escudo");
+    inventory.push_back("Martillo");
+    inventory.push_back("Rifle");
+
+    //iterador para cambiar datos
+    vector<string>::iterator myiterator;
+    //iterador para solo ver datos
+    vector<string>::const_iterator iter;
+
+    cout << "tus items" << endl;
+
+    for (iter = inventory.begin(); iter != inventory.end(); iter++)
+    {
+        cout << *iter << endl;
+    }
+
+    //intercambio
+    cout << "intercambiaste tu " << inventory[2] << " por un arco";
+    myiterator = inventory.begin() + 2;
+    *myiterator = "arco";
+
+    cout << "tu inventario" << endl;
+
+    for (iter = inventory.begin(); iter != inventory.end(); iter++)
+    {
+        cout << *iter << endl;
+    }
+
+    //size
+    cout << "el nombre del item " << *myiterator << " tiene";
+    cout << (*myiterator).size() << " letras" << endl;
+
+    //insert
+    cout << "el nombre del item " << *myiterator << " tiene";
+    cout << (myiterator)->size() << " letras" << endl;
+
+    iter = inventory.insert(inventory.begin() + 2, "bomba");
+    cout << "tus items" << endl;
+    for (iter = inventory.begin(); iter != inventory.end(); iter++)
+    {
+        cout << *iter << endl;
+    }
+}
+
+void guessword()
 {
     //encontrar 
     vector<string> words = { "gato", "perro", "coche" };
@@ -78,8 +133,7 @@ void main()
 
 }
 
-
-void vectorPart2() {
+void Iters() {
     const int NUM_SCORES = 4;
     int score;
 
