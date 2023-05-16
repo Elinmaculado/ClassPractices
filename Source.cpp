@@ -18,21 +18,25 @@ void guessword2();
 void goodSwap(int& a, int& b);
 void badSwap(int &a, int &b);
 
+void display(const vector<string>& vec);
+
 void main()
 {
-    int score1 = 20;
-    int score2 = 100;
+    vector<string> inventory;
 
-    cout << "score 1: " << score1 << endl << "score 2: " << score2 << endl;
-    badSwap(score1, score2);
-    
-    cout << "score 1: " << score1 << endl 
-         << "score 2: " << score2 << endl;
+    inventory.push_back("Sword");
+    inventory.push_back("Armor");
+    inventory.push_back("Gun");
+}
 
-    goodSwap(score1, score2);
+void display(const vector<string>& vec) 
+{
+    vector<string>::const_iterator iter;
 
-    cout << "score 1: " << &score1 << endl
-         << "score 2: " << &score2 << endl;
+    for (iter = vec.begin(); iter != vec.end(); iter++) 
+    {
+        cout << *iter << endl;
+    }
 }
 
 void badSwap(int &a, int &b)
