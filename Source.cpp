@@ -13,10 +13,90 @@ void vectorReserve();
 void Iters();
 void guessword();
 void iterinventory();
+void guessword2();
+
+void goodSwap(int& a, int& b);
+void badSwap(int &a, int &b);
 
 void main()
 {
+    int score1 = 20;
+    int score2 = 100;
 
+    cout << "score 1: " << score1 << endl << "score 2: " << score2 << endl;
+    badSwap(score1, score2);
+    
+    cout << "score 1: " << score1 << endl 
+         << "score 2: " << score2 << endl;
+
+    goodSwap(score1, score2);
+
+    cout << "score 1: " << &score1 << endl
+         << "score 2: " << &score2 << endl;
+}
+
+void badSwap(int &a, int &b)
+{
+    int c = a;
+    a = b;
+    b = c;
+}
+
+void goodSwap(int& a, int& b) {
+
+
+}
+
+void guessword2()
+{
+    const int MAX_ATTEMPTS = 3;
+    int attempts = 0;
+    vector<string> words;
+
+    words.push_back("COMPUTADORA");
+    words.push_back("JUEGO");
+    words.push_back("CODIGO");
+    words.push_back("REFRIGERADOR");
+
+    srand(time(NULL));
+    int randNumber = rand();
+    int wordRandomIndex = (randNumber % words.size());
+    string wordSelected = words[wordRandomIndex];
+
+    cout << wordSelected << endl;
+
+    random_shuffle(wordSelected.begin(), wordSelected.end());
+    cout << wordSelected << endl;
+
+    string correctWord;
+
+    do {
+        cin >> correctWord;
+        transform(correctWord.begin(), correctWord.end(), correctWord.begin(), ::toupper);
+        cout << correctWord << endl;
+    
+        if (correctWord == words[wordRandomIndex])
+        {
+            cout << "Adiviniste la palabra" << endl;
+            break;
+        }
+        else
+        {
+            attempts++;
+            cout << "fallaste puto niño imbecil, te quedan " << MAX_ATTEMPTS - attempts << endl;
+        }
+
+    } while (attempts != MAX_ATTEMPTS);
+
+    if (attempts == MAX_ATTEMPTS)
+    {
+        cout << "perdiste pinche niño meco" << endl;
+        cout << "la palabra era:" << words[wordRandomIndex];
+    }
+    else
+    {
+        cout << "felicidades, ganaste en " << attempts + 1 << " intentos";
+    }
 }
 
 void iterinventory()
@@ -61,6 +141,15 @@ void iterinventory()
 
     iter = inventory.insert(inventory.begin() + 2, "bomba");
     cout << "tus items" << endl;
+    for (iter = inventory.begin(); iter != inventory.end(); iter++)
+    {
+        cout << *iter << endl;
+    }
+
+    //DELETE
+    cout << "\nTu " << inventory[1] << " fue destruido en batalla.";
+    inventory.erase(inventory.begin() + 1);
+    cout << "\nTus Items: \n";
     for (iter = inventory.begin(); iter != inventory.end(); iter++)
     {
         cout << *iter << endl;
