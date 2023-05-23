@@ -20,14 +20,75 @@ void badSwap(int &a, int &b);
 
 void display(const vector<string>& vec);
 
+void tictactoe();
+
 void main()
 {
-    vector<string> inventory;
-
-    inventory.push_back("Sword");
-    inventory.push_back("Armor");
-    inventory.push_back("Gun");
+    tictactoe();
 }
+
+void tictactoe()
+{
+    const int ROWS = 7;
+    const int COLUMNS = 7;
+
+    cout << "Caja" << endl;
+    for (int i = 0; i < ROWS; i++)
+    {
+        if (i == 0 || i == (ROWS - 1))
+        {
+            for (int j = 0; j < COLUMNS; j++)
+            {
+                cout << " 1 ";
+            }
+            cout << endl;
+        }
+        else
+        {
+            cout << " 1 ";
+            for (int j = 1; j < (COLUMNS-1); j++)
+            {
+                cout << " 0 ";
+            }
+            cout << " 1 " << endl;
+        }
+    }
+    cout << endl << "diagonales" << endl;
+    cout << "Caja" << endl;
+    for (int i = 0; i < ROWS; i++)
+    {
+        if (i == 0 || i == (ROWS - 1))
+        {
+            for (int j = 0; j < COLUMNS; j++)
+            {
+                cout << " 1 ";
+            }
+            cout << endl;
+        }
+        else
+        {
+            cout << " 1 ";
+            for (int j = 1; j < (COLUMNS - 1); j++)
+            {
+                if (i == j || COLUMNS -i -1 == j)
+                {
+                    cout << " 1 ";
+                }
+
+                else
+                {
+                    cout << " 0 ";
+                }
+            }
+            cout << " 1 " << endl;
+        }
+        
+    }
+}
+
+
+
+
 
 void display(const vector<string>& vec) 
 {
@@ -422,3 +483,15 @@ void guessMyNumber()
         }
     } while (guess != secretNumber);
 }
+
+
+/*else if (i % 2 != 0)
+{
+    if ((i / 2) == j)
+    {
+        cout << " 1 ";
+    }
+
+    cout << " 1 ";
+                }
+ */
