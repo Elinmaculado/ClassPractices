@@ -14,20 +14,194 @@ void Iters();
 void guessword();
 void iterinventory();
 void guessword2();
-
 void goodSwap(int& a, int& b);
 void badSwap(int &a, int &b);
-
 void display(const vector<string>& vec);
+void MatrixBox();
 
-void tictactoe();
+void TicTacToe();
 
 void main()
 {
-    tictactoe();
+    TicTacToe();
 }
 
-void tictactoe()
+void TicTacToe()
+{
+    const int HEIGTH_WIDTH = 3;
+    const int ROWS = 3;
+    const int COLUMNS = 3;
+    bool playing = true;
+    int x;
+    int o;
+
+    //declaras la matriz
+    char board[ROWS][COLUMNS] = {{ '0', '1', '2' }, 
+                                 { '3', '4', '5' },
+                                 { '6', '7', '8' }};
+    
+    char PlayBoard[ROWS][COLUMNS] = { { '.', '.', '.' },
+                                      { '.', '.', '.' },
+                                      { '.', '.', '.' } };
+
+    cout << "TicTacToe" << endl;
+    
+    for (int i = 0; i < ROWS; i++)
+    {
+        for (int j = 0; j < COLUMNS; j++)
+        {
+            cout << board[i][j];
+        }
+        cout << endl;
+    }
+    
+    for (int i = 0; i < ROWS; i++)
+    {
+        for (int j = 0; j < COLUMNS; j++)
+        {
+            cout << PlayBoard[i][j];
+        }
+        cout << endl;
+    }
+    while (playing == true) {
+        do {
+            cout << "Jugador X, ingresa el numero del espacio que deseas ocupar" << endl;
+            cin >> x;
+
+
+            if (x == 0 && PlayBoard[0][0] == '.')
+            {
+                PlayBoard[0][0] = 'X';
+            }
+            else if (x == 1 && PlayBoard[0][1] == '.')
+            {
+                PlayBoard[0][1] = 'X';
+            }
+            else if (x == 2 && PlayBoard[0][2] == '.')
+            {
+                PlayBoard[0][2] = 'X';
+            }
+            else if (x == 3)
+            {
+                PlayBoard[1][0] = 'X';
+            }
+            else if (x == 4)
+            {
+                PlayBoard[1][1] = 'X';
+            }
+            else if (x == 5)
+            {
+                PlayBoard[1][2] = 'X';
+            }
+            else if (x == 6)
+            {
+                PlayBoard[2][0] = 'X';
+            }
+            else if (x == 7)
+            {
+                PlayBoard[2][1] = 'X';
+            }
+            else if (x == 8)
+            {
+                PlayBoard[2][2] = 'X';
+            }
+            else
+            {
+                cout << "elije una opcion valida" << endl;
+            }
+        } while (x < 0 || x > 8);
+
+        system("cls");
+
+        for (int i = 0; i < ROWS; i++)
+        {
+            for (int j = 0; j < COLUMNS; j++)
+            {
+                cout << board[i][j];
+            }
+            cout << endl;
+        }
+
+        for (int i = 0; i < ROWS; i++)
+        {
+            for (int j = 0; j < COLUMNS; j++)
+            {
+                cout << PlayBoard[i][j];
+            }
+            cout << endl;
+        }
+
+        do {
+            cout << "Jugador O, ingresa el numero del espacio que deseas ocupar" << endl;
+            cin >> o;
+
+
+            if (o == 0 && PlayBoard[0][0] == '.')
+            {
+                PlayBoard[0][0] = 'O';
+            }
+            else if (o == 1 && PlayBoard[0][1] == '.')
+            {
+                PlayBoard[0][1] = 'O';
+            }
+            else if (o == 2 && PlayBoard[0][2] == '.')
+            {
+                PlayBoard[0][2] = 'O';
+            }
+            else if (o == 3)
+            {
+                PlayBoard[1][0] = 'O';
+            }
+            else if (o == 4)
+            {
+                PlayBoard[1][1] = 'O';
+            }
+            else if (o == 5)
+            {
+                PlayBoard[1][2] = 'O';
+            }
+            else if (o == 6)
+            {
+                PlayBoard[2][0] = 'O';
+            }
+            else if (o == 7)
+            {
+                PlayBoard[2][1] = 'O';
+            }
+            else if (o == 8)
+            {
+                PlayBoard[2][2] = 'O';
+            }
+            else
+            {
+                cout << " elije una opcion valida";
+            }
+        } while (o < 0 || o > 8);
+
+        system("cls");
+
+        for (int i = 0; i < ROWS; i++)
+        {
+            for (int j = 0; j < COLUMNS; j++)
+            {
+                cout << board[i][j];
+            }
+            cout << endl;
+        }
+
+        for (int i = 0; i < ROWS; i++)
+        {
+            for (int j = 0; j < COLUMNS; j++)
+            {
+                cout << PlayBoard[i][j];
+            }
+            cout << endl;
+        }
+    }
+}
+
+
+void MatrixBox()
 {
     const int ROWS = 7;
     const int COLUMNS = 7;
@@ -53,8 +227,9 @@ void tictactoe()
             cout << " 1 " << endl;
         }
     }
+
     cout << endl << "diagonales" << endl;
-    cout << "Caja" << endl;
+
     for (int i = 0; i < ROWS; i++)
     {
         if (i == 0 || i == (ROWS - 1))
@@ -68,7 +243,7 @@ void tictactoe()
         else
         {
             cout << " 1 ";
-            for (int j = 1; j < (COLUMNS - 1); j++)
+            for (int j = 1; j < (COLUMNS - 1); j++)     //i+j == ROWS -1
             {
                 if (i == j || COLUMNS -i -1 == j)
                 {
@@ -85,10 +260,6 @@ void tictactoe()
         
     }
 }
-
-
-
-
 
 void display(const vector<string>& vec) 
 {
@@ -483,15 +654,3 @@ void guessMyNumber()
         }
     } while (guess != secretNumber);
 }
-
-
-/*else if (i % 2 != 0)
-{
-    if ((i / 2) == j)
-    {
-        cout << " 1 ";
-    }
-
-    cout << " 1 ";
-                }
- */
