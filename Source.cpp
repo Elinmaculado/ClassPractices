@@ -33,85 +33,26 @@ void TicTacToe()
     const int COLUMNS = 3;
     bool playing = true;
     int x;
-    int o;
+    int y;
+    int z;
+    bool turnx = true;
+    bool turno = false;
+    int test = 1;
 
     //declaras la matriz
-    char board[ROWS][COLUMNS] = {{ '0', '1', '2' }, 
+    char board[ROWS][COLUMNS] = { { '0', '1', '2' },
                                  { '3', '4', '5' },
-                                 { '6', '7', '8' }};
-    
+                                 { '6', '7', '8' } };
+
     char PlayBoard[ROWS][COLUMNS] = { { '.', '.', '.' },
                                       { '.', '.', '.' },
                                       { '.', '.', '.' } };
 
     cout << "TicTacToe" << endl;
-    
-    for (int i = 0; i < ROWS; i++)
-    {
-        for (int j = 0; j < COLUMNS; j++)
-        {
-            cout << board[i][j];
-        }
-        cout << endl;
-    }
-    
-    for (int i = 0; i < ROWS; i++)
-    {
-        for (int j = 0; j < COLUMNS; j++)
-        {
-            cout << PlayBoard[i][j];
-        }
-        cout << endl;
-    }
-    while (playing == true) {
-        do {
-            cout << "Jugador X, ingresa el numero del espacio que deseas ocupar" << endl;
-            cin >> x;
 
-            if (x == 0 && PlayBoard[0][0] == '.')
-            {
-                PlayBoard[0][0] = 'X';
-            }
-            else if (x == 1 && PlayBoard[0][1] == '.')
-            {
-                PlayBoard[0][1] = 'X';
-            }
-            else if (x == 2 && PlayBoard[0][2] == '.')
-            {
-                PlayBoard[0][2] = 'X';
-            }
-            else if (x == 3 && PlayBoard[1][0] == '.')
-            {
-                PlayBoard[1][0] = 'X';
-            }
-            else if (x == 4 && PlayBoard[1][1] == '.')
-            {
-                PlayBoard[1][1] = 'X';
-            }
-            else if (x == 5 && PlayBoard[1][2] == '.')
-            {
-                PlayBoard[1][2] = 'X';
-            }
-            else if (x == 6 && PlayBoard[2][0] == '.')
-            {
-                PlayBoard[2][0] = 'X';
-            }
-            else if (x == 7 && PlayBoard[2][1] == '.')
-            {
-                PlayBoard[2][1] = 'X';
-            }
-            else if (x == 8 && PlayBoard[2][2] == '.')
-            {
-                PlayBoard[2][2] = 'X';
-            }
-            else
-            {
-                cout << "elije una opcion valida" << endl;
-            }
-        } while (x < 0 || x > 8);
-        system("pause");
-        system("cls");
-
+    
+    do {
+    do {
         for (int i = 0; i < ROWS; i++)
         {
             for (int j = 0; j < COLUMNS; j++)
@@ -129,56 +70,26 @@ void TicTacToe()
             }
             cout << endl;
         }
+        cout << "turno del jugador X, elija el espacio que quiere ocupar" << endl;
+        cin >> z;
+        x = z / 3;
+        y = z % 3;
 
-        do {
-            cout << "Jugador O, ingresa el numero del espacio que deseas ocupar" << endl;
-            cin >> o;
+        //do while para que pregunte mientras boardxy sea diferente de .
 
-
-            if (o == 0 && PlayBoard[0][0] == '.')
-            {
-                PlayBoard[0][0] = 'O';
-            }
-            else if (o == 1 && PlayBoard[0][1] == '.')
-            {
-                PlayBoard[0][1] = 'O';
-            }
-            else if (o == 2 && PlayBoard[0][2] == '.')
-            {
-                PlayBoard[0][2] = 'O';
-            }
-            else if (o == 3 && PlayBoard[1][0] == '.')
-            {
-                PlayBoard[1][0] = 'O';
-            }
-            else if (o == 4 && PlayBoard[1][1] == '.')
-            {
-                PlayBoard[1][1] = 'O';
-            }
-            else if (o == 5 && PlayBoard[1][2] == '.')
-            {
-                PlayBoard[1][2] = 'O';
-            }
-            else if (o == 6 && PlayBoard[2][0] == '.')
-            {
-                PlayBoard[2][0] = 'O';
-            }
-            else if (o == 7 && PlayBoard[2][1] == '.')
-            {
-                PlayBoard[2][1] = 'O';
-            }
-            else if (o == 8 && PlayBoard[2][2] == '.')
-            {
-                PlayBoard[2][2] = 'O';
-            }
-            else
-            {
-                cout << "elije una opcion valida" << endl;
-            }
-        } while (o < 0 || o > 8);
-        system("pause");
+        if (PlayBoard[x][y] != '.')
+        {
+            cout << "elige una opcion valida" << endl;
+        }
+        else
+        {
+            PlayBoard[x][y] = 'X';
+            turnx = false;
+        }
         system("cls");
-
+    } while (turnx == true);
+    
+    do {
         for (int i = 0; i < ROWS; i++)
         {
             for (int j = 0; j < COLUMNS; j++)
@@ -196,7 +107,23 @@ void TicTacToe()
             }
             cout << endl;
         }
-    }
+        cout << "turno del jugador O, elija el espacio que quiere ocupar" << endl;
+        cin >> z;
+        x = z / 3;
+        y = z % 3;
+
+        if (PlayBoard[x][y] != '.')
+        {
+            cout << "elige una opcion valida" << endl;
+        }
+        else
+        {
+            PlayBoard[x][y] = 'O';
+            turno = false;
+        }
+        system("cls");
+    } while (turno == true);
+    } while (test == 1);
 }
 
 
