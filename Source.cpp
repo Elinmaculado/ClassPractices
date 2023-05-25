@@ -68,7 +68,6 @@ void TicTacToe()
             cout << "Jugador X, ingresa el numero del espacio que deseas ocupar" << endl;
             cin >> x;
 
-
             if (x == 0 && PlayBoard[0][0] == '.')
             {
                 PlayBoard[0][0] = 'X';
@@ -81,27 +80,27 @@ void TicTacToe()
             {
                 PlayBoard[0][2] = 'X';
             }
-            else if (x == 3)
+            else if (x == 3 && PlayBoard[1][0] == '.')
             {
                 PlayBoard[1][0] = 'X';
             }
-            else if (x == 4)
+            else if (x == 4 && PlayBoard[1][1] == '.')
             {
                 PlayBoard[1][1] = 'X';
             }
-            else if (x == 5)
+            else if (x == 5 && PlayBoard[1][2] == '.')
             {
                 PlayBoard[1][2] = 'X';
             }
-            else if (x == 6)
+            else if (x == 6 && PlayBoard[2][0] == '.')
             {
                 PlayBoard[2][0] = 'X';
             }
-            else if (x == 7)
+            else if (x == 7 && PlayBoard[2][1] == '.')
             {
                 PlayBoard[2][1] = 'X';
             }
-            else if (x == 8)
+            else if (x == 8 && PlayBoard[2][2] == '.')
             {
                 PlayBoard[2][2] = 'X';
             }
@@ -110,7 +109,7 @@ void TicTacToe()
                 cout << "elije una opcion valida" << endl;
             }
         } while (x < 0 || x > 8);
-
+        system("pause");
         system("cls");
 
         for (int i = 0; i < ROWS; i++)
@@ -148,36 +147,36 @@ void TicTacToe()
             {
                 PlayBoard[0][2] = 'O';
             }
-            else if (o == 3)
+            else if (o == 3 && PlayBoard[1][0] == '.')
             {
                 PlayBoard[1][0] = 'O';
             }
-            else if (o == 4)
+            else if (o == 4 && PlayBoard[1][1] == '.')
             {
                 PlayBoard[1][1] = 'O';
             }
-            else if (o == 5)
+            else if (o == 5 && PlayBoard[1][2] == '.')
             {
                 PlayBoard[1][2] = 'O';
             }
-            else if (o == 6)
+            else if (o == 6 && PlayBoard[2][0] == '.')
             {
                 PlayBoard[2][0] = 'O';
             }
-            else if (o == 7)
+            else if (o == 7 && PlayBoard[2][1] == '.')
             {
                 PlayBoard[2][1] = 'O';
             }
-            else if (o == 8)
+            else if (o == 8 && PlayBoard[2][2] == '.')
             {
                 PlayBoard[2][2] = 'O';
             }
             else
             {
-                cout << " elije una opcion valida";
+                cout << "elije una opcion valida" << endl;
             }
         } while (o < 0 || o > 8);
-
+        system("pause");
         system("cls");
 
         for (int i = 0; i < ROWS; i++)
