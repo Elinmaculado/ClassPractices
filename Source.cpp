@@ -535,14 +535,34 @@ void vectorsPart1()
 
 int askNumber(string question, int high, int low)
 {
-    int number = 0;
+    string input;
+    bool isValid;
+
+    //int number = 0;
 
     do {
         cout << question << "entre " << low << " y " << high << endl;
-        cin >> number;
-    } while (number > high || number < low);
+        getline(cin, input);
 
-    return number;
+        isValid = true;
+        cout << endl << " elige una opcion valida" << endl;
+        for (char c : input)
+        {
+            if (!isdigit(c))
+            {
+                isValid = false;
+                break;
+            }
+
+            /*if (!isValid)
+            {
+
+            }*/
+        }
+
+    } while (!isValid || input.empty() || stoi(input) > high || stoi(input) < low);
+
+    return stoi(input);
 }
 
 void guessMyNumber()
