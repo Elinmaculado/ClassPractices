@@ -4,6 +4,8 @@
 #include <algorithm>
 #include <cstdlib>
 #include <clocale>
+#include <cctype>
+#include <limits>
 
 using namespace std;
 
@@ -542,23 +544,31 @@ int askNumber(string question, int high, int low)
 
     do {
         cout << question << "entre " << low << " y " << high << endl;
+        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         getline(cin, input);
 
-        isValid = true;
-        cout << endl << " elige una opcion valida" << endl;
+
+        isValid = false;
+
         for (char c : input)
         {
             if (!isdigit(c))
             {
+                cout << endl << "elige un numero" << endl;
                 isValid = false;
                 break;
             }
-
-            /*if (!isValid)
-            {
-
-            }*/
         }
+
+        if (stoi(input) < low || stoi(input) > high)
+        {
+            cout << "elige un numero valido" << endl;
+            isValid = false;
+        }
+        /*else if (stoi(input) => low && sotoi(input) <= high)
+        {
+            isValid = true;
+        }*/
 
     } while (!isValid || input.empty() || stoi(input) > high || stoi(input) < low);
 
